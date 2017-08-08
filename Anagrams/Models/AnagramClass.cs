@@ -18,14 +18,34 @@ namespace Anagrams.Models
         _partial = new List<string>{};
       }
 
+      public string GetInputWord()
+      {
+        return _inputWord;
+      }
+
+      public List<string> GetAnagrams()
+      {
+        return _anagrams;
+      }
+
+      public List<string> GetNotAnagrams()
+      {
+        return _notAnagrams;
+      }
+
+      public List<string> GetPartial()
+      {
+        return _partial;
+      }
+
+
       public bool CheckAnagram(string testString)
       {
-        if (testString.Length != _inputWord.Length)
-        {
-          return CheckPartialAnagram(testString);
-        }
-        else
-        {
+          if (testString.Length < _inputWord.Length)
+          {
+            _partial.Add(testString);
+            return CheckPartialAnagram(testString);
+          }
           char[] inputWordArray = _inputWord.ToCharArray();
           char[] testWordArray = testString.ToCharArray();
           Array.Sort(inputWordArray);
@@ -41,7 +61,6 @@ namespace Anagrams.Models
           }
           _anagrams.Add(testString);
           return true;
-        }
       }
 
       public bool CheckPartialAnagram(string testString)

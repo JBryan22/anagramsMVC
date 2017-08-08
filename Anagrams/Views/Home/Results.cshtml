@@ -1,0 +1,38 @@
+@{
+  Layout = "_Layout";
+}
+
+<h2>These are anagrams:</h2>
+
+@foreach (var word in Model[0])
+{
+  <h3>@word</h3>
+}
+
+
+<h2>These are not anagrams:</h2>
+
+@foreach (var word in Model[1])
+{
+  <h3>@word</h3>
+}
+
+
+<h2>These are partial anagrams:</h2>
+
+@foreach (var word in Model[2])
+{
+  <h3>@word</h3>
+}
+
+<a href="/"><button>Home</button></a>
+
+
+@* @foreach (var word in Model[1])
+{
+  <li>@word.GetNotAnagrams()</li>
+}
+ *@
+
+@*
+</ul> *@
