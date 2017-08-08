@@ -22,7 +22,7 @@ namespace Anagrams.Models
       {
         if (testString.Length != _inputWord.Length)
         {
-          return false;
+          return CheckPartialAnagram(testString);
         }
         else
         {
@@ -42,7 +42,18 @@ namespace Anagrams.Models
           _anagrams.Add(testString);
           return true;
         }
+      }
 
+      public bool CheckPartialAnagram(string testString)
+      {
+        for (int i = 0; i < testString.Length; i++)
+        {
+          if ((testString.Split(testString[i]).Length - 1) > (_inputWord.Split(testString[i]).Length - 1))
+          {
+            return false;
+          }
+        }
+        return true;
       }
     }
 }
